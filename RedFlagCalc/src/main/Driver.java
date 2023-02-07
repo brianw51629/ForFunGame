@@ -51,7 +51,7 @@ public class Driver extends JPanel implements ActionListener, MouseListener, Key
 		f.setVisible(true);
 		b.setVisible(true);
 	}
-
+ 
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
