@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author bwall
- *
- */
-module RedFlagCalc {
-}
