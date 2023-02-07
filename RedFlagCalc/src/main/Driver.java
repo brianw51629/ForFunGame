@@ -29,27 +29,37 @@ import javax.swing.JLabel;
 
 
 public class Driver extends JPanel implements ActionListener, MouseListener, KeyListener {
-
+	
+	
+	Background bckg = new Background();
+	
+	
+	public void paint(Graphics g) {
+		super.paintComponent(g);
+		bckg.paint(g);
+		
+		
+		
+	}
+	
 	public static void main(String[] args) {
 		Driver f = new Driver();
 		
 	}
 	
 	public Driver() {
-		//background.play();
 		JFrame f = new JFrame("For Fun Game");
-		JButton b=new JButton(new ImageIcon(""));    
-		f.setSize(new Dimension(1200, 900));
-		f.setBackground(new Color(240,248,255));
+		JButton b=new JButton(new ImageIcon("Start"));    
+		b.setBounds(550,500,95,30); 
+		f.setSize(1200, 900);
 		f.add(this);
 		f.setResizable(false);
+		f.setLayout(null); 
 		f.addMouseListener(this);
 		f.addKeyListener(this);
-		b.setBounds(5,10,9,3);
 		f.add(b);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setVisible(true);
-		b.setVisible(true);
 	}
  
 	@Override
