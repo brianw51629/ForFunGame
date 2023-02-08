@@ -9,13 +9,13 @@ import java.awt.event.MouseListener;
 import java.awt.geom.AffineTransform;
 import java.net.URL;
 
-public class Background {
+public class StartMenu {
 	private int x, y;
 	private Image img;
 	private AffineTransform tx;
 
-	public Background() {
-		img = getImage("/imgs/daytimeBackground.png"); // load the image for Tree
+	public StartMenu() {
+		img = getImage("/imgs/FIXED Start Menu.png"); // load the image for Tree
 
 		tx = AffineTransform.getTranslateInstance(x, y);
 		init(x, y); // initialize the location of the image
@@ -25,7 +25,7 @@ public class Background {
 
 	}
 
-	public Background(String fileName) {
+	public StartMenu(String fileName) {
 		img = getImage("/imgs/" + fileName); // load the image for Tree
 
 		tx = AffineTransform.getTranslateInstance(x, y);
@@ -46,10 +46,12 @@ public class Background {
 	}
 
 	private void update() {
-		tx.setToTranslation(x, y);
+		tx.setToTranslation(400, 100);
 		tx.scale(1, 1);
 	}
-
+	public void leave() {
+		tx.setToTranslation(10000,10000);
+	}
 	private void init(double a, double b) {
 		tx.setToTranslation(a, b);
 		tx.scale(.5, .5);
@@ -58,7 +60,7 @@ public class Background {
 	private Image getImage(String path) {
 		Image tempImage = null;
 		try {
-			URL imageURL = Background.class.getResource(path);
+			URL imageURL = StartMenu.class.getResource(path);
 			tempImage = Toolkit.getDefaultToolkit().getImage(imageURL);
 		} catch (Exception e) {
 			e.printStackTrace();

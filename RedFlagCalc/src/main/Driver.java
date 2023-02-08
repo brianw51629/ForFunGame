@@ -19,104 +19,113 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import javax.swing.JLabel;
 
-
-
 public class Driver extends JPanel implements ActionListener, MouseListener, KeyListener {
 	
-	
 	Background bckg = new Background();
+	StartMenu m = new StartMenu();
 	
 	
 	public void paint(Graphics g) {
 		super.paintComponent(g);
 		bckg.paint(g);
-		
-		
-		
+		m.paint(g);
 	}
-	
-	public static void main(String[] args) {
+
+	public static void main(String[] arg) {
 		Driver f = new Driver();
 		
 	}
-	
+
 	public Driver() {
-		JFrame f = new JFrame("For Fun Game");
-		JButton b=new JButton(new ImageIcon("Start"));    
-		b.setBounds(550,500,95,30); 
-		f.setSize(1200, 900);
+		
+		JFrame f = new JFrame("IDK Yet");
+		f.setSize(new Dimension(1200, 900));
+		f.setBackground(new Color(0, 0, 0));
 		f.add(this);
 		f.setResizable(false);
-		f.setLayout(null); 
+		f.setLayout(new GridLayout(1, 2));
 		f.addMouseListener(this);
 		f.addKeyListener(this);
-		f.add(b);
+		Timer t = new Timer(16, this);
+		t.start();
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setVisible(true);
-	}
- 
-	@Override
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
+		
+		
+
 		
 	}
 
-	@Override
-	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
 	
 	
 	
+	
+	@Override
+	public void mouseClicked(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void mousePressed(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+			
+		
+			
+				
+	}
+	
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		repaint();
+	}
+
+	@Override
+	public void keyPressed(KeyEvent arg32) {
+		// TODO Auto-generated method stub
+		
+		System.out.println(arg32.getKeyCode());
+		
+		
+		
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+
+	}
 
 }
