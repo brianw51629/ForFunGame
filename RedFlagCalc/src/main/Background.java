@@ -34,8 +34,9 @@ public class Background {
 	}
 
 	public void changePicture(String newFileName) {
-		img = getImage(newFileName);
-		init(x, y);
+		img = getImage("/imgs/"+newFileName);
+		if(newFileName=="afternoonBackground")
+		init(x+50, y);
 	}
 
 	public void paint(Graphics g) {

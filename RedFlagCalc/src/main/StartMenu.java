@@ -15,7 +15,7 @@ public class StartMenu {
 	private AffineTransform tx;
 
 	public StartMenu() {
-		img = getImage("/imgs/FIXED Start Menu.png"); // load the image for Tree
+		img = getImage("/imgs/lighter StartMenu.png"); // load the image for Tree
 
 		tx = AffineTransform.getTranslateInstance(x, y);
 		init(400, 100); // initialize the location of the image

@@ -21,7 +21,7 @@ public class Button {
 	
 	
 	public Button(int num) {
-		img = getImage("/imgs/button.png"); // load the image for Tree
+		img = getImage("/imgs/lighter button.png"); // load the image for Tree
 
 		tx = AffineTransform.getTranslateInstance(x, y);
 		//init(x, y); // initialize the location of the image
@@ -34,6 +34,9 @@ public class Button {
 		}
 		if(num==3) {
 			init(500, 370);
+		}
+		if(num==4) {
+			init(0,0);
 		}
 		
 
@@ -48,7 +51,7 @@ public class Button {
 	}
 
 	public void changePicture(String newFileName) {
-		img = getImage(newFileName);
+		img = getImage("/imgs/"+newFileName);
 		init(x, y);
 	}
 
@@ -62,6 +65,9 @@ public class Button {
 
 	public void update() {
 		init(5000,5000);
+	}
+	public void updateSettings() {
+		tx.scale(0.5,0.5);
 	}
 
 	private void init(double a, double b) {

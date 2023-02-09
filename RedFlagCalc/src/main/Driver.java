@@ -36,6 +36,7 @@ public class Driver extends JPanel implements ActionListener, MouseListener, Key
 	Button b1 = new Button(1);
 	Button b2 = new Button(2);
 	Button b3 = new Button(3);
+	Button s1 = new Button(4);
 	Character c = new Character();
 	public void paint(Graphics g) {
 		super.paintComponent(g);
@@ -46,6 +47,9 @@ public class Driver extends JPanel implements ActionListener, MouseListener, Key
 		b3.paint(g, 3);
 		if(game) {
 			c.paint(g);
+			s1.changePicture("settings icon.png");
+			s1.updateSettings();
+			s1.paint(g,4);
 		}
 	}
 
@@ -112,7 +116,8 @@ public class Driver extends JPanel implements ActionListener, MouseListener, Key
 				start=false;
 				game=true;
 			}else if(option==true) {
-				m.changePicture("FIXED Start Menu.png");
+				m.changePicture("lighter StartMenu.png");
+				bckg.changePicture("daytimeBackground.png");
 				start=true;
 				option=false;
 			}
@@ -123,11 +128,12 @@ public class Driver extends JPanel implements ActionListener, MouseListener, Key
 			System.out.println("Start "+start);
 			System.out.println("Option "+option);
 			if(start==true) {
-				m.changePicture("Difficulty Menu.png");
+				m.changePicture("lighter Difficulty Menu.png");
 				option=true;
 				start=false;
 			}else if(option==true) {
-				m.changePicture("FIXED Start Menu.png");
+				m.changePicture("lighter StartMenu.png");
+				bckg.changePicture("UPDATED afternoonBackground.png");
 				start=true;
 				option=false;
 			}
@@ -143,7 +149,8 @@ public class Driver extends JPanel implements ActionListener, MouseListener, Key
 			if(start==true) {
 				System.exit(0);
 			}else if(option==true) {
-				m.changePicture("FIXED Start Menu.png");
+				m.changePicture("lighter StartMenu.png");
+				bckg.changePicture("nighttimeBackground.png");
 				start=true;
 				option=false;
 			}
