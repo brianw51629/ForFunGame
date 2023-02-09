@@ -10,36 +10,24 @@ import java.awt.event.MouseListener;
 import java.awt.geom.AffineTransform;
 import java.net.URL;
 
-public class Button {
+public class Character {
 	private int x, y;
+	private int vx, vy;
 	private Image img;
 	private AffineTransform tx;
-	public boolean playGame;
-	
-	
-	
-	
-	
-	public Button(int num) {
-		img = getImage("/imgs/button.png"); // load the image for Tree
+	private int newV = 0;
+	public Character() {
+		img = getImage("/imgs/better character pic.png"); // load the image for Tree
 
 		tx = AffineTransform.getTranslateInstance(x, y);
-		//init(x, y); // initialize the location of the image
+		init(550, 500); // initialize the location of the image
 					// use your variables
-		if(num==1) {
-			init(500, 200);
-		}
-		if(num==2) {
-			init(500, 285);
-		}
-		if(num==3) {
-			init(500, 370);
-		}
-		
+		x = 450;
+		y = 200;
 
 	}
 
-	public Button(String fileName) {
+	public Character(String fileName) {
 		img = getImage("/imgs/" + fileName); // load the image for Tree
 
 		tx = AffineTransform.getTranslateInstance(x, y);
@@ -52,16 +40,34 @@ public class Button {
 		init(x, y);
 	}
 
-	public void paint(Graphics g, int num) {
+	public void paint(Graphics g) {
 		// these are the 2 lines of code needed draw an image on the screen
 		Graphics2D g2 = (Graphics2D) g;
-		//System.out.println(num);
+		
+		
+		//update();
 		g2.drawImage(img, tx, null);
+		g.setColor(new Color(0,0,0));
+		//g.drawRect(x+20,y,75,75);
 		
 	}
 
-	public void update() {
-		init(5000,5000);
+	public void setNewV(int grabbed) {
+		newV=(grabbed+1)*2;
+	}
+	
+	
+	public void reset() {
+		x = (int)(Math.random() * 751);
+		y = 200;
+		vx = 3;
+		vy = 3;
+		vx+=newV;
+		vy += newV;
+	}
+	
+	private void update() {
+		
 	}
 
 	private void init(double a, double b) {
@@ -72,7 +78,7 @@ public class Button {
 	private Image getImage(String path) {
 		Image tempImage = null;
 		try {
-			URL imageURL = Button.class.getResource(path);
+			URL imageURL = Character.class.getResource(path);
 			tempImage = Toolkit.getDefaultToolkit().getImage(imageURL);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -80,30 +86,36 @@ public class Button {
 		return tempImage;
 	}
 	
-	public boolean hit(MouseEvent mouse,int num) {
+	
+	
+	public int getX() {
+		return x;
+	}
+	public int getY() {
+		return y;
+	}
+	
+	public int getVX() {
+		return vx;
+	}
+	public void setVX(int setter) {
+		vx = setter;
+	}
+	public boolean hit(MouseEvent mouse) {
 		
 		//represent the mouse as a rectangle
-		if(num==1) {
-			x=500;
-			y=200;
-		}
-		if(num==2) {
-			x=500;
-			y=285;
-		}
-		if(num==3) {
-			x=500;
-			y=370;
-		}
-		Rectangle m = new Rectangle(mouse.getX(),mouse.getY(), 35, 35);
+		
+		Rectangle m = new Rectangle(mouse.getX(),mouse.getY(), 25, 25);
 		
 		
 		//Duck hit box
 		
-		Rectangle d = new Rectangle(x+25,y+25,60,40);
+		Rectangle d = new Rectangle(x+20,y,75,75);
 		//Rectangle d2 = new Rectangle(x+20,y,75,75);
 		
 		if(m.intersects(d)) {
+			vx=0;
+			vy=10;
 			System.out.println("HIT");
 			return true;
 		}
@@ -111,8 +123,27 @@ public class Button {
 		
 		return false;
 	}
-	public void leave() {
-	tx.setToTranslation(10000,10000);
-	}
+	
+	
+	
+	
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

@@ -33,10 +33,10 @@ public class Driver extends JPanel implements ActionListener, MouseListener, Key
 	public boolean game = false;
 	Background bckg = new Background();
 	StartMenu m = new StartMenu();
-	Button b1 = new Button();
-	Button b2 = new Button();
-	Button b3 = new Button();
-	
+	Button b1 = new Button(1);
+	Button b2 = new Button(2);
+	Button b3 = new Button(3);
+	Character c = new Character();
 	public void paint(Graphics g) {
 		super.paintComponent(g);
 		bckg.paint(g);
@@ -44,6 +44,9 @@ public class Driver extends JPanel implements ActionListener, MouseListener, Key
 		b1.paint(g, 1);
 		b2.paint(g, 2);
 		b3.paint(g, 3);
+		if(game) {
+			c.paint(g);
+		}
 	}
 
 	public static void main(String[] arg) {
@@ -103,7 +106,11 @@ public class Driver extends JPanel implements ActionListener, MouseListener, Key
 			System.out.println("Button 1");
 			if(start==true) {
 				m.leave();
+				b1.leave();
+				b2.leave();
+				b3.leave();
 				start=false;
+				game=true;
 			}else if(option==true) {
 				m.changePicture("FIXED Start Menu.png");
 				start=true;
