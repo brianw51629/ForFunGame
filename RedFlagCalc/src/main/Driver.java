@@ -27,14 +27,23 @@ import javax.swing.JLabel;
 
 public class Driver extends JPanel implements ActionListener, MouseListener, KeyListener {
 	
+	
+	boolean start = true;
+	boolean option = false;
+	public boolean game = false;
 	Background bckg = new Background();
 	StartMenu m = new StartMenu();
-	
+	Button b1 = new Button();
+	Button b2 = new Button();
+	Button b3 = new Button();
 	
 	public void paint(Graphics g) {
 		super.paintComponent(g);
 		bckg.paint(g);
 		m.paint(g);
+		b1.paint(g, 1);
+		b2.paint(g, 2);
+		b3.paint(g, 3);
 	}
 
 	public static void main(String[] arg) {
@@ -62,7 +71,9 @@ public class Driver extends JPanel implements ActionListener, MouseListener, Key
 		
 	}
 
-	
+	public boolean gameStatus() {
+		return game;
+	}
 	
 	
 	
@@ -88,7 +99,50 @@ public class Driver extends JPanel implements ActionListener, MouseListener, Key
 	public void mousePressed(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 			
+		if(b1.hit(arg0, 1)) {
+			System.out.println("Button 1");
+			if(start==true) {
+				m.leave();
+				start=false;
+			}else if(option==true) {
+				m.changePicture("FIXED Start Menu.png");
+				start=true;
+				option=false;
+			}
+			
+		}
+		if(b2.hit(arg0,2)) {
+			System.out.println("Button 2");
+			System.out.println("Start "+start);
+			System.out.println("Option "+option);
+			if(start==true) {
+				m.changePicture("Difficulty Menu.png");
+				option=true;
+				start=false;
+			}else if(option==true) {
+				m.changePicture("FIXED Start Menu.png");
+				start=true;
+				option=false;
+			}
+			
+			
+			
+		}
 		
+		if(b3.hit(arg0, 3)) {
+			System.out.println("Button 3");
+			System.out.println("Start "+start);
+			System.out.println("Option "+option);
+			if(start==true) {
+				System.exit(0);
+			}else if(option==true) {
+				m.changePicture("FIXED Start Menu.png");
+				start=true;
+				option=false;
+			}
+			
+			
+		}
 			
 				
 	}
