@@ -44,12 +44,12 @@ public class StartMenu {
 		g2.drawImage(img, tx, null);
 	}
 
-	private void update() {
-		tx.setToTranslation(4000, 1000);
-		tx.scale(1, 1);
+	public void update() {
+		x=400;
+		y=100;
 	}
 	public void leave() {
-		update();
+		init(1000,1000);
 	}
 	private void init(double a, double b) {
 		tx.setToTranslation(a, b);

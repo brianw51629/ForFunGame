@@ -10,39 +10,25 @@ import java.awt.event.MouseListener;
 import java.awt.geom.AffineTransform;
 import java.net.URL;
 
-public class Button {
-	private int x, y;
+public class Boom {
+	int x; 
+	int y;
+	private int vx, vy;
 	private Image img;
 	private AffineTransform tx;
-	public boolean playGame;
-	
-	
-	
-	
-	
-	public Button(int num) {
-		img = getImage("/imgs/lighter button.png"); // load the image for Tree
+	private int newV = 0;
+	public Boom() {
+		img = getImage("/imgs/boom img.png"); // load the image for Tree
 
 		tx = AffineTransform.getTranslateInstance(x, y);
-		//init(x, y); // initialize the location of the image
+		init(550, 500); // initialize the location of the image
 					// use your variables
-		if(num==1) {
-			init(500, 200);
-		}
-		if(num==2) {
-			init(500, 285);
-		}
-		if(num==3) {
-			init(500, 370);
-		}
-		if(num==4) {
-			init(0,0);
-		}
-		
+
+		tx.scale(0, 0);
 
 	}
 
-	public Button(String fileName) {
+	public Boom(String fileName) {
 		img = getImage("/imgs/" + fileName); // load the image for Tree
 
 		tx = AffineTransform.getTranslateInstance(x, y);
@@ -51,49 +37,45 @@ public class Button {
 	}
 
 	public void changePicture(String newFileName) {
-		img = getImage("/imgs/"+newFileName);
+		img = getImage(newFileName);
 		init(x, y);
 	}
 
-	public void paint(Graphics g, int num) {
+	public void paint(Graphics g) {
 		// these are the 2 lines of code needed draw an image on the screen
 		Graphics2D g2 = (Graphics2D) g;
-		//System.out.println(num);
+		
+		
+		//update();
 		g2.drawImage(img, tx, null);
+		g.setColor(new Color(0,0,0));
+		//g.drawRect(x+20,y,75,75);
 		
 	}
 
-	public void update(int num) {
-		if(num==0) {
-			init(5000,5000);
-		}
-		if(num==1) {
-			init(500, 200);
-		}
-		if(num==2) {
-			init(500, 285);
-		}
-		if(num==3) {
-			init(500, 370);
-		}
-		if(num==4) {
-			init(0,0);
-		}
+	
+	
+	
+	public void reset() {
 		
 	}
-	public void updateSettings() {
-		tx.scale(0.5,0.5);
+	
+	public void update() {
+		
+		tx.setToTranslation(x, y);
+		
 	}
 
-	private void init(double a, double b) {
+	public void init(double a, double b) {
+		System.out.println("BOOM");
 		tx.setToTranslation(a, b);
-		tx.scale(1, 1);
+		tx.scale(1,1);
 	}
 
 	private Image getImage(String path) {
 		Image tempImage = null;
 		try {
-			URL imageURL = Button.class.getResource(path);
+			URL imageURL = Boom.class.getResource(path);
 			tempImage = Toolkit.getDefaultToolkit().getImage(imageURL);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -101,37 +83,57 @@ public class Button {
 		return tempImage;
 	}
 	
-	public boolean hit(MouseEvent mouse,int num) {
+	
+	public int getVX() {
+		return vx;
+	}
+	public void setVX(int setter) {
+		vx = setter;
+	}
+	public boolean hit(MouseEvent mouse) {
 		
 		//represent the mouse as a rectangle
-		if(num==1) {
-			x=500;
-			y=200;
-		}
-		if(num==2) {
-			x=500;
-			y=285;
-		}
-		if(num==3) {
-			x=500;
-			y=370;
-		}
-		Rectangle m = new Rectangle(mouse.getX(),mouse.getY(), 35, 35);
 		
+		Rectangle m = new Rectangle(mouse.getX(),mouse.getY(), 25, 25);
 		
 		//Duck hit box
 		
-		Rectangle d = new Rectangle(x+25,y+25,60,40);
+		Rectangle d = new Rectangle(0,0,1200,900);
 		//Rectangle d2 = new Rectangle(x+20,y,75,75);
 		
 		if(m.intersects(d)) {
 			//System.out.println("HIT");
+			x=mouse.getX()-15;
+			//System.out.println(x);
+			y=mouse.getY()-30;
+			//System.out.println(y);
 			return true;
+			
 		}
 	
 		
 		return false;
 	}
 	
+	
+	
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
