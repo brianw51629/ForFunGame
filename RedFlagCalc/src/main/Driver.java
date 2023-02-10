@@ -43,6 +43,8 @@ public class Driver extends JPanel implements ActionListener, MouseListener, Key
 	Character c = new Character();
 	Boom e = new Boom();
 	Alien a = new Alien();
+	Music gunshot = new Music("gunshot.wav",false);
+	Music oof = new Music("oof.wav",false);
 	int score = 0;
 	public void paint(Graphics g) {
 		super.paintComponent(g);
@@ -158,11 +160,13 @@ public boolean hit(MouseEvent mouse) {
 		if((start==false&&option==false)&&e.hit(arg0)) {
 			
 			e.update();
+			gunshot.play();
 		}
 		
 		if(pause==false) {
 			if(a.hit(arg0)) {
 			score++;
+			oof.play();
 		}
 		}
 		
