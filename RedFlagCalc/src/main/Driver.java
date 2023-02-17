@@ -259,16 +259,30 @@ public boolean hit(MouseEvent mouse) {
 		// TODO Auto-generated method stub
 		
 		System.out.println(arg32.getKeyCode());
-		
+		if(arg32.getKeyCode()==65) {
+			c.moveLeft();
+			System.out.println("left");
+		}
+		if(arg32.getKeyCode()==68) {
+			c.moveRight();
+			System.out.println("right");
+		}
 		
 		
 		
 	}
 
 	@Override
-	public void keyReleased(KeyEvent arg0) {
+	public void keyReleased(KeyEvent arg32) {
 		// TODO Auto-generated method stub
-
+		if(arg32.getKeyCode()==65) {
+			c.moveStop();
+			System.out.println("stop");
+		}
+		if(arg32.getKeyCode()==68) {
+			c.moveStop();
+			System.out.println("stop");
+		}
 	}
 
 	@Override

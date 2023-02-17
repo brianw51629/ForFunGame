@@ -5,6 +5,7 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.AffineTransform;
@@ -22,9 +23,8 @@ public class Character {
 		tx = AffineTransform.getTranslateInstance(x, y);
 		init(550, 500); // initialize the location of the image
 					// use your variables
-		x = 450;
-		y = 200;
-
+		x = 500;
+		y = 500;
 	}
 
 	public Character(String fileName) {
@@ -48,6 +48,8 @@ public class Character {
 		//update();
 		g2.drawImage(img, tx, null);
 		g.setColor(new Color(0,0,0));
+		x+=vx;
+		tx.setToTranslation(x, y);
 		//g.drawRect(x+20,y,75,75);
 		
 	}
@@ -60,16 +62,19 @@ public class Character {
 	public void reset() {
 		x = (int)(Math.random() * 751);
 		y = 200;
-		vx = 3;
-		vy = 3;
-		vx+=newV;
-		vy += newV;
 	}
 	
-	private void update() {
-		
+	public void moveLeft() {
+		vx=-10;
+		System.out.println("worked");
 	}
-
+	public void moveRight() {
+		vx=10;
+		System.out.println("worked");
+	}
+	public void moveStop() {
+		vx=0;
+	}
 	private void init(double a, double b) {
 		tx.setToTranslation(a, b);
 		tx.scale(1, 1);
@@ -101,32 +106,12 @@ public class Character {
 	public void setVX(int setter) {
 		vx = setter;
 	}
-	public boolean hit(MouseEvent mouse) {
-		
-		//represent the mouse as a rectangle
-		
-		Rectangle m = new Rectangle(mouse.getX(),mouse.getY(), 25, 25);
-		
-		
-		//Duck hit box
-		
-		Rectangle d = new Rectangle(x+20,y,75,75);
-		//Rectangle d2 = new Rectangle(x+20,y,75,75);
-		
-		if(m.intersects(d)) {
-			vx=0;
-			vy=10;
-			System.out.println("HIT");
-			return true;
-		}
 	
-		
-		return false;
+	
+	
+	
+	
 	}
-	
-	
-	
-	
 
 	
 	
@@ -146,4 +131,4 @@ public class Character {
 	
 	
 	
-}
+

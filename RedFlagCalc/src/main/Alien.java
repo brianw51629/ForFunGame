@@ -24,7 +24,7 @@ public class Alien {
 		init(x, y); // initialize the location of the image
 					// use your variables
 		x = 20;
-		y = 20;
+		y = 200;
 
 	}
 
@@ -46,12 +46,12 @@ public class Alien {
 Graphics2D g2 = (Graphics2D) g;
 		
 		
-		if(y>=500) {
+		if(y>=600) {
 			setVXY(difficulty);
 			reset();
 			
 		}
-		if (y <= 0 || y >= 480) {
+		if (y <= 100 || y >= 580) {
 			
 			if(vy!=15) {
 			vy = -vy;
@@ -163,7 +163,7 @@ Graphics2D g2 = (Graphics2D) g;
 		return false;
 	}
 	
-	
+
 	
 	
 
