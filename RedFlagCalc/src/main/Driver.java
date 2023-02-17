@@ -33,18 +33,23 @@ public class Driver extends JPanel implements ActionListener, MouseListener, Key
 	boolean option = false;
 	public boolean game = false;
 	public boolean pause = false;
-	String difficulty = "easy";
+	String difficulty = "realistic";
 	Background bckg = new Background();
 	StartMenu m = new StartMenu();
 	Button b1 = new Button(1);
 	Button b2 = new Button(2);
 	Button b3 = new Button(3);
 	Button s1 = new Button(4);
+	
+	
 	Character c = new Character();
+	Character cm = new Character("HumanAlien.png");
+	
 	Boom e = new Boom();
 	Alien a = new Alien();
 	Music gunshot = new Music("gunshot.wav",false);
 	Music oof = new Music("oof.wav",false);
+	
 	int score = 0;
 	public void paint(Graphics g) {
 		super.paintComponent(g);
@@ -55,7 +60,12 @@ public class Driver extends JPanel implements ActionListener, MouseListener, Key
 		b3.paint(g, 3);
 		e.paint(g);
 		if(game) {
-			c.paint(g);
+			if(difficulty!="realistic") {
+				c.paint(g);
+				}else if(difficulty=="realistic"){
+					cm.paint(g);
+				}
+			
 			a.paint(g);
 			s1.changePicture("settings icon.png");
 			s1.updateSettings();

@@ -33,6 +33,9 @@ public class Character {
 		tx = AffineTransform.getTranslateInstance(x, y);
 		init(x, y); // initialize the location of the image
 					// use your variables
+		
+		x = 500;
+		y = 470;
 	}
 
 	public void changePicture(String newFileName) {
